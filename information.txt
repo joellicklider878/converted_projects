@@ -1,0 +1,2 @@
+converted programming code from vb.net, c# to python 3, 'c' for practice.
+

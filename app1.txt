@@ -1,0 +1,15 @@
+app1
+
+purpose: folder browser toolbox vs 2003
+programming language: vbnet
+
+Dim fldBrwse As New FolderBrowserDialog
+fldBrwse.Description = "The new folder browser control"
+fldBrwse.ShowNewFolderButton = True
+fldBrwse.RootFolder = Environment.SpecialFolder.MyComputer
+if fldBrwse.ShowDialog() = DialogResult.OK 
+Then 
+   MsgBox("you selected: ", _fldBrwse.SelectedPath, _MsgBoxStyle.OkOnly, Me.Text)
+End If
+
+reference folder_browser.py
