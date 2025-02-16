@@ -1,0 +1,13 @@
+app2
+
+purpose: append filename to a directory path using the path combine method
+programming language: vb.net 2003
+
+Dim Filename As String = "..\..\myfile.txt"
+Dim Path As String = "c:\temp"
+
+Filename = System.IO.Path.GetFileName(Filename)
+Path = System.IO.Path.Combine(Path, Filename)
+' Path is now "c:\temp\myfile.txt"
+
+reference filePath.py

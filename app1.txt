@@ -1,7 +1,7 @@
 app1
 
 purpose: folder browser toolbox vs 2003
-programming language: vbnet
+programming language: vbnet 
 
 Dim fldBrwse As New FolderBrowserDialog
 fldBrwse.Description = "The new folder browser control"
