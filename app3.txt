@@ -35,4 +35,3 @@ Public Module FileVersionInformation
 
     reference versionInfo.py
 
-    "pip" install pywin32
