@@ -35,3 +35,4 @@ Public Module FileVersionInformation
 
     reference versionInfo.py
 
+commands: python versionInfo.py <"program.exe" or "*.dll">
