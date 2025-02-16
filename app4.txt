@@ -1,0 +1,108 @@
+app4
+
+purpose: search file for text 
+
+programming language: vb.net 2003
+Public Class FileTextSearcher
+
+    Private _Matches As New ArrayList
+    Private _FileFilter As String
+    Private _SearchText As String
+    Private _CaseSensitive As Boolean = True
+
+    Public ReadOnly Property Matches() As ArrayList
+        Get
+            Return _Matches
+        End Get
+    End Property
+
+    Public Property FileFilter() As String
+        Get
+            Return _FileFilter
+        End Get
+        Set(ByVal Value As String)
+            _FileFilter = Value
+        End Set
+    End Property
+
+    Public Property SearchText() As String
+        Get
+            Return _SearchText
+        End Get
+        Set(ByVal Value As String)
+            _SearchText = Value
+        End Set
+    End Property
+
+    Public Property CaseSensitive() As Boolean
+        Get
+            Return _CaseSensitive
+        End Get
+        Set(ByVal Value As Boolean)
+            _CaseSensitive = Value
+        End Set
+    End Property
+
+    Public Sub New(ByVal fileFilter As String, ByVal searchText As String)
+        Me.FileFilter = fileFilter
+        Me.SearchText = searchText
+    End Sub
+
+    Public Sub Search(ByVal startingPath As String)
+        Matches.Clear()
+        SearchDirectory(New DirectoryInfo(startingPath))
+    End Sub
+
+    Private Sub SearchDirectory(ByVal dir As DirectoryInfo)
+        ' Get the files in this direcory.
+        Dim FileItem As FileInfo
+        For Each FileItem In dir.GetFiles(FileFilter)
+            ' Test if file matches.
+            If TestFileForMatch(FileItem) Then
+                Matches.Add(FileItem)
+            End If
+        Next
+
+        ' You could add recursive logic here by calling SearchDirectory
+        ' on all subdirectories (see recipe 5.7).
+    End Sub
+
+    Private Function TestFileForMatch(ByVal file As FileInfo) As Boolean
+        ' Open the file.
+        Dim fs As FileStream = file.OpenRead()
+        Dim Match As Boolean = False
+
+        ' Search for the text.
+        Dim MatchCount, MatchPosition As Integer
+        Dim Character, MatchCharacter As String
+
+        ' Read through the entire file.
+        Do Until fs.Position = fs.Length
+            ' Get a character from the file.
+            Character = Convert.ToChar(fs.ReadByte())
+
+            ' Retrieve the next character to be matched from the search text.
+            MatchCharacter = SearchText.Substring(MatchPosition, 1)
+
+            If String.Compare(Character, MatchCharacter, _
+              Not Me.CaseSensitive) = 0 Then
+                ' They match. Now try to match the next character.
+                MatchPosition += 1
+            Else
+                ' They don't match. Start again from the beginning.
+                MatchPosition = 0
+            End If
+
+            ' Check if the entire string has been matched.
+            If MatchPosition = SearchText.Length - 1 Then
+                Return True
+            End If
+        Loop
+
+        fs.Close()
+        Return False
+    End Function
+
+End Class
+
+reference checkFile.py
