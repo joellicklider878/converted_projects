@@ -1,0 +1,38 @@
+app3
+
+purpose: gets version info of file with "getversioninfo"
+
+programming language: vb.net 2003
+Public Module FileVersionInformation
+
+    Public Sub Main(ByVal args() As String)
+        If args.Length = 0 Then
+            Console.WriteLine("Please supply a filename.")
+        Else
+            Dim FileName As String = args(0)
+            Dim Info As FileVersionInfo
+            Info = FileVersionInfo.GetVersionInfo(FileName)
+
+            ' Display version information.
+            Console.WriteLine("Checking File: " & Info.FileName)
+            Console.WriteLine("Product Name: " & Info.ProductName)
+            Console.WriteLine("Product Version: " & Info.ProductVersion)
+            Console.WriteLine("Company Name: " & Info.CompanyName)
+            Console.WriteLine("File Version: " & Info.FileVersion)
+            Console.WriteLine("File Description: " & Info.FileDescription)
+            Console.WriteLine("Original Filename: " & Info.OriginalFilename)
+            Console.WriteLine("Legal Copyright: " & Info.LegalCopyright)
+            Console.WriteLine("InternalName: " & Info.InternalName)
+            Console.WriteLine("IsDebug: " & Info.IsDebug)
+            Console.WriteLine("IsPatched: " & Info.IsPatched)
+            Console.WriteLine("IsPreRelease: " & Info.IsPreRelease)
+            Console.WriteLine("IsPrivateBuild: " & Info.IsPrivateBuild)
+            Console.WriteLine("IsSpecialBuild: " & Info.IsSpecialBuild)
+        End If
+
+        Console.ReadLine()
+    End Sub
+
+    reference versionInfo.py
+
+    "pip" install pywin32
