@@ -1,0 +1,72 @@
+app5
+
+purpose: autogenerate excel file
+programming language: vb.net 2003
+
+Public Class DriveExcelForm
+    Inherits System.Windows.Forms.Form
+
+    ' (Designer code omitted.)
+
+    Private Sub Form_Load(ByVal sender As System.Object, _
+      ByVal e As System.EventArgs) Handles MyBase.Load
+        ' Start and show Excel.
+        Dim App As New Excel.Application()
+        App.Visible = True
+
+        ' Create a new document.
+        Dim Doc As Excel.Workbook = App.Workbooks.Add()
+        Dim Sheet As Excel.Worksheet = Doc.Sheets(1)
+
+        ' Format the table headings.
+        Sheet.Range("A1").Value = "Month"
+        Sheet.Range("B1").Value = "Number of Days"
+
+        ' The range expression 1:1 selects all cells in the first row.
+        Sheet.Range("1:1").Font.Size = 12
+        Sheet.Range("1:1").Font.Bold = True
+        Sheet.Range("1:1").RowHeight = 20
+
+        ' The range expression A:A selects all cells in the first column.
+        Sheet.Range("A:A").ColumnWidth = 20
+        Sheet.Range("B:B").ColumnWidth = 20
+
+        ' Populate the sheet with some tabular data.
+        Dim Days As Integer
+        Dim i As Integer
+        For i = 1 To 12
+            Days = DateTime.DaysInMonth(DateTime.Now.Year, i)
+            Sheet.Range("A" & (i + 1)).Value = _
+              DateTimeFormatInfo.CurrentInfo.GetMonthName(i)
+            Sheet.Range("B" & (i + 1)).Value = Days
+        Next
+
+        ' Create and format a new 3D column chart.
+        Dim Chart As Excel.Chart = Doc.Charts.Add(, Sheet)
+        Chart.ChartType = Excel.XlChartType.xl3DColumn
+        Chart.SetSourceData(Sheet.Range("A1:B13"))
+
+        ' Copy the chart to a PictureBox on this form, using the clipboard.
+        Chart.ChartArea.Select()
+        Chart.ChartArea.Copy()
+
+        ' Retrieve the picture.
+        Dim ChartImage As Image = _
+          CType(Clipboard.GetDataObject().GetData(DataFormats.Bitmap), Bitmap)
+
+        ' Shrink the picture to fit the form.
+        Dim ScalingRatio As Single = PictureBox1.Width / ChartImage.Width
+        ChartImage = ChartImage.GetThumbnailImage( _
+          ChartImage.Width * ScalingRatio, ChartImage.Height * ScalingRatio, _
+          Nothing, Nothing)
+
+        PictureBox1.Image = ChartImage
+
+        ' Modify the chart so it appears alongside the Excel table,
+        ' instead of in a separate window.
+        Chart.Location(Excel.XlChartLocation.xlLocationAsObject, "Sheet1")
+    End Sub
+
+reference autoGenExcel.py
+
+commands: "pip" install openpyxl matplotlib
