@@ -1,0 +1,49 @@
+app6
+
+purpose: create and use dataset
+programming language: c#
+
+DataSet ds = new DataSet();
+DataSet ds = new DataSet("myDataSet");
+
+foreach(DataRow row in ds.Tables[0].Rows)
+{
+    foreach(DataColumn col in row.Table.Columns)
+        this.textBox1.Text = this.textBox1.Text 
+            + row[col].ToString() + "\t";
+    this.textBox1.Text = this.textBox1.Text + "\n";
+}
+foreach(DataRow row in ds.Tables[0].Rows)
+    row[1] = "NewValue";
+
+DataRow row = ds.Tables[0].NewRow();
+row["au_id"] = "123-45-6789";
+row["au_lname"] = "MyLastName";
+row["au_fname"] = "MyFirstName";
+ds.Tables[0].Rows.Add(row);
+
+private void UpdateDataSet (DataSet ds)
+{
+    if(ds.HasChanges())
+    {
+        DataSet dirtyDS = ds.GetChanges();
+        //Take action.
+        
+    
+
+}
+
+}
+
+  ds.AcceptChanges();
+  
+dataGrid1.DataSource = ds;
+dataGrid1.DataMember = "authors";
+textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", 
+    ds, "authors.au_lname"));
+ds.WriteXML("C:\mydata.xml");
+ds.ReadXML("C:\mydata.xml");
+
+reference newDataset.py
+
+command: "pip" install pandas lxml
