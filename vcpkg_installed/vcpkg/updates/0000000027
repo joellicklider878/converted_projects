@@ -1,0 +1,8 @@
+Package: libiconv
+Version: 1.17
+Port-Version: 5
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 34887a6c4899931d2b3cdc63ae6a9bdb560f4e59ceb3769a1fcb3044df47563a
+Description: GNU Unicode text conversion
+Status: install ok installed

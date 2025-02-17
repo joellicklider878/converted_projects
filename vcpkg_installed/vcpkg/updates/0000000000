@@ -1,0 +1,10 @@
+Package: libxml2
+Version: 2.11.9
+Port-Version: 1
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: c506ed18f417ae81fcd97b84d0f8f57d4d6d948def9a1de4b5f0cb3d77231b66
+Description: Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).
+Default-Features: iconv, lzma, zlib
+Status: purge ok half-installed

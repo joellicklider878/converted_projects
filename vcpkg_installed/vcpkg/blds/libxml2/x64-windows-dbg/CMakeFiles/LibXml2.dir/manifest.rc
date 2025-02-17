@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+2 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/LibXml2.dir/embed.manifest"

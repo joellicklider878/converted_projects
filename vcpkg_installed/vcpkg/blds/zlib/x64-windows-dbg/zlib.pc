@@ -1,0 +1,13 @@
+prefix=D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug
+exec_prefix=D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug
+libdir=D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug/lib
+sharedlibdir=D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug/lib
+includedir=D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/debug/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.3.1
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lzlibd
+Cflags: -I${includedir}

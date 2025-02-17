@@ -1,0 +1,8 @@
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/LibXml2.dir
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/package.dir
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/package_source.dir
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/edit_cache.dir
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/rebuild_cache.dir
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/list_install_components.dir
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/install.dir
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/blds/libxml2/x64-windows-dbg/CMakeFiles/install/local.dir

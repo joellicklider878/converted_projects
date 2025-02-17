@@ -1,0 +1,4 @@
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/lib/zlib.lib
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/bin/zlib1.dll
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/include/zconf.h
+D:/source/ConsoleApplication1/vcpkg_installed/vcpkg/pkgs/zlib_x64-windows/include/zlib.h
