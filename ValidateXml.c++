@@ -1,13 +1,14 @@
-#include <stdio.h>
+#include <iostream>
 #include <libxml/xmlreader.h>
 #include <libxml/xmlschemas.h>
+#include <cstdarg>
 
 void OnValidationError(void *ctx, const char *msg, ...);
 const char* GetTargetNamespace(const char *src);
 
 int main(int argc, char *argv[]) {
     if (argc < 3) {
-        printf("Syntax: VALIDATE xmldoc schemadoc\n");
+        std::cerr << "Syntax: VALIDATE xmldoc schemadoc\n";
         return 1;
     }
 
@@ -18,13 +19,13 @@ int main(int argc, char *argv[]) {
 
     xmlTextReaderPtr nvr = xmlReaderForFile(argv[1], NULL, 0);
     if (nvr == NULL) {
-        printf("Failed to open XML file.\n");
+        std::cerr << "Failed to open XML file.\n";
         return 1;
     }
 
     reader = xmlReaderNewFile(argv[0], NULL, 0);
     if (reader == NULL) {
-        printf("Failed to open schema file.\n");
+        std::cerr << "Failed to open schema file.\n";
         xmlFreeTextReader(nvr);
         return 1;
     }
@@ -40,7 +41,7 @@ int main(int argc, char *argv[]) {
             xmlStrEqual(xmlTextReaderConstLocalName(reader), BAD_CAST "schema")) {
             xmlChar *namespace = xmlTextReaderGetAttribute(reader, BAD_CAST "targetNamespace");
             if (namespace) {
-                printf("Target namespace: %s\n", namespace);
+                std::cout << "Target namespace: " << namespace << "\n";
                 xmlFree(namespace);
             }
         }
@@ -66,7 +67,7 @@ void OnValidationError(void *ctx, const char *msg, ...) {
 const char* GetTargetNamespace(const char *src) {
     xmlTextReaderPtr reader = xmlReaderForFile(src, NULL, 0);
     if (reader == NULL) {
-        printf("Failed to open file.\n");
+        std::cerr << "Failed to open file.\n";
         return NULL;
     }
 
