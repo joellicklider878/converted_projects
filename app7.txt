@@ -70,4 +70,4 @@ class MyApp
     }
 }
 
-reference ValidateXml.c++
+reference ValidateXml.c
